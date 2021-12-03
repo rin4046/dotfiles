@@ -1,5 +1,6 @@
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dense-analysis/ale'
@@ -14,6 +15,7 @@ resize 12 | set winfixheight | wincmd p
 set number
 
 let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_fix_on_save = 1
