@@ -3,5 +3,5 @@
 ## Install
 
 ```zsh
-zsh -c "$(curl -fsSL https://rinrin.me/dotfiles)"
+zsh -c "$(curl -fsSL https://dotfiles.rinrin.me)"
 ```
