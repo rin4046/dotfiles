@@ -1,0 +1,8 @@
+from: markdown
+to: pdf
+
+pdf-engine: lualatex
+
+variables:
+  documentclass: jlreq
+  indent: true
