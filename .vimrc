@@ -20,6 +20,6 @@ set ttimeoutlen=10
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeShowHidden = 1
 
-belowright terminal ++kill=hup
-resize 14 | set winfixheight | wincmd p
+belowright terminal ++rows=14 ++kill=hup
+set winfixheight | wincmd p
 set number

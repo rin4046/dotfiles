@@ -1,4 +1,5 @@
-export DOTFILES="${HOME}/.dotfiles"
-export PATH="${DOTFILES}-private/bin:${PATH}"
 export EDITOR="vim"
 export NVM_DIR="${HOME}/.nvm"
+
+source "$HOME/.cargo/env"
+source "/opt/homebrew/opt/nvm/nvm.sh"
