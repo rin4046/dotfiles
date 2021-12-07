@@ -24,10 +24,14 @@ zinit wait lucid light-mode for \
   zdharma/history-search-multi-word
 
 function set_window_title() {
-    print -Pn "\e]0;%~\a"
+    print -Pn "\e]0;%m %~\a"
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd set_window_title
+
+export HISTFILE="${HOME}/.zsh_history"
+export HISTSIZE=1000
+export SAVEHIST=1000
 
 alias ls="exa --long --git --icons"
 alias ssh="kitty +kitten ssh"

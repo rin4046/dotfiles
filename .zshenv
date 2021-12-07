@@ -1,4 +1,4 @@
 export DOTFILES="${HOME}/.dotfiles"
-export EDITOR="code"
+export PATH="${DOTFILES}-private/bin:${PATH}"
+export EDITOR="vim"
 export NVM_DIR="${HOME}/.nvm"
-export PATH="${HOME}/.dotfiles-private/bin:${PATH}"
