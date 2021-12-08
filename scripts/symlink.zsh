@@ -13,5 +13,7 @@ for f in "$DOTFILES/."??*; do
   esac
 done
 
-mkdir -p "$HOME/.config"
-ln -snfv "$DOTFILES/.config/"* "$HOME/.config"
+mkdir -p "$HOME/.config/kitty"
+ln -snfv "$DOTFILES/.config/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+mkdir -p "$HOME/.config/nvim"
+ln -snfv "$DOTFILES/.config/nvim/init.vim" "$HOME/.config/nvim/init.vim"
