@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+curl -o "$HOME/.zshrc" --create-dirs -L "https://raw.githubusercontent.com/rin4046/dotfiles/master/.zshrc"
+curl -o "$HOME/.vimrc" --create-dirs -L "https://raw.githubusercontent.com/rin4046/dotfiles/master/.vimrc"
+curl -o "$HOME/.config/kitty/kitty.conf" --create-dirs -L "https://raw.githubusercontent.com/rin4046/dotfiles/master/.config/kitty/kitty.conf"
