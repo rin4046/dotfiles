@@ -22,4 +22,5 @@ let g:NERDTreeShowHidden = 1
 
 belowright terminal ++rows=14 ++kill=hup
 set winfixheight | wincmd p
+set backspace=indent,eol,start
 set number
