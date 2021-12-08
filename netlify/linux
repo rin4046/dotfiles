@@ -6,4 +6,6 @@ git clone "https://github.com/rin4046/dotfiles" "$DOTFILES"
 
 ln -snfv "$DOTFILES/.zshrc" "$HOME/.zshrc"
 ln -snfv "$DOTFILES/.vimrc" "$HOME/.vimrc"
-ln -snfv "$DOTFILES/.config/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+
+mkdir -p "$HOME/.config"
+ln -snfv "$DOTFILES/.config/"* "$HOME/.config"
