@@ -3,21 +3,49 @@
 DOTFILES="$HOME/.dotfiles"
 
 : "Install Homebrew" && {
-  printf "\n\033[32m%s\033[m\n" "> Install Homebrew"
+  print "\n\e[32m> Install Homebrew\e[m"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
 : "git clone dotfiles" && {
-  printf "\n\033[32m%s\033[m\n" "> github.com/rinrinrin4046/dotfiles -> ~/.dotfiles"
+  print "\n\e[32m> git clone dotfiles\e[m"
   git clone "https://github.com/rin4046/dotfiles" "$DOTFILES"
+  source "$DOTFILES/.zshenv"
 }
 
-source "$DOTFILES/.zshenv"
+: "Create symbolic links" && {
+  print "\n\e[32m> Create symbolic links\e[m"
 
-: "Run some scripts" && {
-  source "$DOTFILES/scripts/symlink.zsh"
-  source "$DOTFILES/scripts/bundle.zsh"
-  source "$DOTFILES/scripts/misc.zsh"
+  for f in "$DOTFILES/."??*; do
+    filename="$(basename $f)"
+    case "$filename" in
+    ".DS_Store") continue ;;
+    ".git") continue ;;
+    ".gitignore") continue ;;
+    ".config") continue ;;
+    *) ln -snfv "$DOTFILES/$filename" "$HOME/$filename" ;;
+    esac
+  done
+
+  mkdir -p "$HOME/.config/kitty"
+  ln -snfv "$DOTFILES/.config/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+  mkdir -p "$HOME/.config/nvim"
+  ln -snfv "$DOTFILES/.config/nvim/init.vim" "$HOME/.config/nvim/init.vim"
+}
+
+: "Install software from the Brewfile" && {
+  print "\n\e[32m> Install software from the Brewfile\e[m"
+  sudo softwareupdate --install-rosetta
+  brew doctor
+  brew bundle --global
+}
+
+: "git clone dotfiles-private" && {
+  print "\n\e[32m> git clone dotfiles-private\e[m"
+  gh auth login
+  git clone "https://github.com/rin4046/dotfiles-private" "$HOME/.dotfiles-private"
+  mkdir -p "$HOME/.ssh"
+  ln -snfv "$HOME/.dotfiles-private/ssh_config" "$HOME/.ssh/config"
 }
 
 printf "\n\033[32m%s\033[m\n" "Done!"
