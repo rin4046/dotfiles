@@ -15,9 +15,9 @@ DOTFILES="$HOME/.dotfiles"
 source "$DOTFILES/.zshenv"
 
 : "Run some scripts" && {
-  zsh "$DOTFILES/scripts/symlink.zsh"
-  zsh "$DOTFILES/scripts/bundle.zsh"
-  zsh "$DOTFILES/scripts/misc.zsh"
+  source "$DOTFILES/scripts/symlink.zsh"
+  source "$DOTFILES/scripts/bundle.zsh"
+  source "$DOTFILES/scripts/misc.zsh"
 }
 
 printf "\n\033[32m%s\033[m\n" "Done!"
