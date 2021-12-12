@@ -1,5 +1,6 @@
-export EDITOR="vim"
+export EDITOR="nvim"
 export NVM_DIR="${HOME}/.nvm"
 
-source "$HOME/.cargo/env"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 source "/opt/homebrew/opt/nvm/nvm.sh"
+source "$HOME/.cargo/env"
