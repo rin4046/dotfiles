@@ -22,6 +22,7 @@ let g:NERDTreeShowHidden = 1
 
 set mouse=a
 set termguicolors
+let g:lightline = { 'colorscheme': 'bogster' }
 colorscheme bogster
 
 tnoremap <Esc> <C-\><C-n>
