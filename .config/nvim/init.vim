@@ -7,7 +7,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
-function Init()
+function! TabInit()
   set nonumber
   set signcolumn=no
   NERDTree | wincmd p
@@ -17,17 +17,26 @@ function Init()
   set signcolumn=yes
 endfunction
 
+function! FiletypeWithIcon()
+  return strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft'
+endfunction
+
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeShowHidden = 1
+let g:lightline = {
+\   'colorscheme': 'bogster',
+\   'component_function': {
+\     'filetype': 'FiletypeWithIcon'
+\   }
+\ }
 
 set mouse=a
 set termguicolors
-let g:lightline = { 'colorscheme': 'bogster' }
 colorscheme bogster
 
 tnoremap <Esc> <C-\><C-n>
-autocmd VimEnter * call Init()
-autocmd TabNew * call Init()
+autocmd VimEnter * call TabInit()
+autocmd TabNew * call TabInit()
 autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
 autocmd TermOpen * setlocal nonumber | setlocal signcolumn=no
 
