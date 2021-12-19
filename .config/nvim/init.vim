@@ -43,4 +43,7 @@ autocmd TermOpen * setlocal nonumber | setlocal signcolumn=no
 lua << EOF
 vim.diagnostic.config({ update_in_insert = true })
 require'lspconfig'.clangd.setup{}
+require'lspconfig'.volar.setup{
+  filetypes = { 'vue', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json' }
+}
 EOF
