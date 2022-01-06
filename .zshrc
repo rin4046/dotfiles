@@ -14,5 +14,3 @@ source "$DOTFILES/zinit.zsh"
 eval "$(starship init zsh)"
 
 alias ls="exa --long --git --icons"
-alias ssh="kitty +kitten ssh"
-alias vi="nvim"
