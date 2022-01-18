@@ -15,7 +15,7 @@ eval "$(starship init zsh)"
 
 alias ls="exa --long --git --icons"
 
-if [[ -v VIM_TERMINAL ]]; then
+if [[ -n "$VIM_TERMINAL" ]]; then
   function vim() {
     if [[ $# != 1 ]]; then
       return 1
