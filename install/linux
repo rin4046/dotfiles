@@ -5,6 +5,7 @@ DOTFILES="$HOME/.dotfiles"
 git clone "https://github.com/rin4046/dotfiles" "$DOTFILES"
 
 ln -snfv "$DOTFILES/.zshrc" "$HOME/.zshrc"
+ln -snfv "$DOTFILES/.vimrc" "$HOME/.vimrc"
 ln -snfv "$DOTFILES/.editorconfig" "$HOME/.editorconfig"
 ln -snfv "$DOTFILES/.clang-format" "$HOME/.clang-format"
 
