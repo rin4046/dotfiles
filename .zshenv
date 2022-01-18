@@ -1,4 +1,4 @@
-export EDITOR="mvim"
+export EDITOR="vim"
 export NVM_DIR="${HOME}/.nvm"
 
 source "/opt/homebrew/opt/nvm/nvm.sh"

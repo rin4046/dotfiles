@@ -14,3 +14,17 @@ source "$DOTFILES/zinit.zsh"
 eval "$(starship init zsh)"
 
 alias ls="exa --long --git --icons"
+
+if [[ -v VIM_TERMINAL ]]; then
+  function vim() {
+    if [[ $# != 1 ]]; then
+      return 1
+    fi
+    local _abspath=$([[ $1 = /* ]] && print "$1" || print -P "%//$1")
+    print -n "\e]51;[\"drop\",\"$_abspath\"]\x07"
+  }
+
+  function vimcd() {
+    print -Pn "\e]51;[\"call\",\"Tapi_vimcd\",\"%/\"]\x07"
+  }
+fi

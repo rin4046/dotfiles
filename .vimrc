@@ -10,12 +10,21 @@ plug#end()
 set number
 set signcolumn=number
 set laststatus=2
-
-colorscheme bogster
+set termguicolors
 set background=dark
-set guifont=PlemolJPConsoleNF-Regular:h12
+colorscheme bogster
 
-command! T :vertical botright term
+autocmd GUIEnter * {
+  set guifont=PlemolJPConsoleNF-Regular:h12
+  autocmd VimEnter * terminal ++curwin
+}
+autocmd WinNew * wincmd L
+autocmd User CocDiagnosticChange lightline#update()
+
+def g:Tapi_vimcd(buf: number, path: string)
+  execute 'tcd ' .. path
+  pwd
+enddef
 
 def g:LspErrors(): string
   var info = get(b:, 'coc_diagnostic_info', {})
@@ -26,8 +35,6 @@ def g:LspWarnings(): string
   var info = get(b:, 'coc_diagnostic_info', {})
   return get(info, 'warning', 0) ? 'W:' .. info['warning'] : ''
 enddef
-
-autocmd User CocDiagnosticChange lightline#update()
 
 g:lightline = {
   'colorscheme': 'bogster',
@@ -48,8 +55,8 @@ g:lightline = {
   }
 }
 
-g:coc_global_extensions = ['coc-clangd', 'coc-rls']
-coc#config("diagnostic.errorSign", "E>")
-coc#config("diagnostic.warningSign", "W>")
+g:coc_global_extensions = ['coc-clangd', 'coc-rls', '@yaegassy/coc-volar']
+coc#config('diagnostic.errorSign', 'E>')
+coc#config('diagnostic.warningSign', 'W>')
 coc#config('diagnostic.refreshOnInsertMode', true)
-coc#config('coc.preferences.formatOnSaveFiletypes', ['c', 'cpp', 'rust'])
+coc#config('coc.preferences.formatOnSaveFiletypes', ['c', 'cpp', 'rust', 'vue'])
