@@ -1,7 +1,7 @@
 vim9script
 
 plug#begin('~/.vim/plugged')
-if system('hostname')[ : 4] != 'xdev.'
+if system('hostname')[ : 3] != 'xdev'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 Plug 'editorconfig/editorconfig-vim'
