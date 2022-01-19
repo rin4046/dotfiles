@@ -18,9 +18,8 @@ colorscheme bogster
 autocmd GUIEnter * {
   if has('mac')
     set guifont=PlemolJPConsoleNF-Regular:h12
-  elseif has('linux')
-    autocmd VimEnter * terminal ++curwin
   endif
+  autocmd VimEnter * terminal ++curwin
 }
 autocmd WinNew * wincmd L
 autocmd User CocDiagnosticChange lightline#update()
