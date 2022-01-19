@@ -7,6 +7,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'vv9k/bogster'
 plug#end()
 
+set backspace=indent,eol,start
 set number
 set signcolumn=number
 set laststatus=2
@@ -15,8 +16,11 @@ set background=dark
 colorscheme bogster
 
 autocmd GUIEnter * {
-  set guifont=PlemolJPConsoleNF-Regular:h12
-  autocmd VimEnter * terminal ++curwin
+  if has('mac')
+    set guifont=PlemolJPConsoleNF-Regular:h12
+  elseif has('linux')
+    autocmd VimEnter * terminal ++curwin
+  endif
 }
 autocmd WinNew * wincmd L
 autocmd User CocDiagnosticChange lightline#update()
