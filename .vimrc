@@ -1,7 +1,9 @@
 vim9script
 
 plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if system('hostname')[ : 4] != 'xdev.'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'vv9k/bogster'
