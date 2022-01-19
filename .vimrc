@@ -24,7 +24,6 @@ autocmd GUIEnter * {
   autocmd VimEnter * terminal ++curwin
 }
 autocmd WinNew * wincmd L
-autocmd User CocDiagnosticChange lightline#update()
 
 def g:Tapi_vimcd(buf: number, path: string)
   execute 'tcd ' .. path
@@ -60,8 +59,16 @@ g:lightline = {
   }
 }
 
-g:coc_global_extensions = ['coc-clangd', 'coc-rls', '@yaegassy/coc-volar']
-coc#config('diagnostic.errorSign', 'E>')
-coc#config('diagnostic.warningSign', 'W>')
-coc#config('diagnostic.refreshOnInsertMode', true)
-coc#config('coc.preferences.formatOnSaveFiletypes', ['c', 'cpp', 'rust', 'vue'])
+if system('hostname')[ : 3] != 'xdev'
+  plug#begin('~/.vim/plugged')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  plug#end()
+
+  autocmd User CocDiagnosticChange lightline#update()
+
+  g:coc_global_extensions = ['coc-clangd', 'coc-rls', '@yaegassy/coc-volar']
+  coc#config('diagnostic.errorSign', 'E>')
+  coc#config('diagnostic.warningSign', 'W>')
+  coc#config('diagnostic.refreshOnInsertMode', true)
+  coc#config('coc.preferences.formatOnSaveFiletypes', ['c', 'cpp', 'rust', 'vue'])
+endif
