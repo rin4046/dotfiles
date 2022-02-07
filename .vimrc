@@ -4,50 +4,25 @@ plug#begin('~/.vim/plugged')
 Plug 'vv9k/bogster'
 Plug 'itchyny/lightline.vim'
 Plug 'editorconfig/editorconfig-vim'
-if system('hostname')[ : 3] != 'xdev'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 plug#end()
 
 set backspace=indent,eol,start
 set number
-set signcolumn=number
 set laststatus=2
 set termguicolors
 set background=dark
 colorscheme bogster
 
-autocmd GUIEnter * {
-  if has('mac')
-    set guifont=PlemolJPConsoleNF-Regular:h12
-  endif
-  autocmd VimEnter * terminal ++curwin
-}
-autocmd WinNew * wincmd L
-autocmd User CocDiagnosticChange lightline#update()
-
-def g:Tapi_vimcd(buf: number, path: string)
-  execute 'tcd ' .. path
-  pwd
-enddef
-
-def g:LspErrors(): string
-  var info = get(b:, 'coc_diagnostic_info', {})
-  return get(info, 'error', 0) ? 'E:' .. info['error'] : ''
-enddef
-
-def g:LspWarnings(): string
-  var info = get(b:, 'coc_diagnostic_info', {})
-  return get(info, 'warning', 0) ? 'W:' .. info['warning'] : ''
-enddef
-
+g:lsp_diagnostics_echo_cursor = 1
 g:lightline = {
   'colorscheme': 'bogster',
   'active': {
     'right': [
       ['lsp_warnings', 'lsp_errors'],
       ['lineinfo'],
-      ['fileformat', 'fileencoding']
+      ['fileencoding', 'filetype']
     ]
   },
   'component_expand': {
@@ -60,10 +35,49 @@ g:lightline = {
   }
 }
 
-if system('hostname')[ : 3] != 'xdev'
-  g:coc_global_extensions = ['coc-clangd', 'coc-rls', '@yaegassy/coc-volar']
-  coc#config('diagnostic.errorSign', 'E>')
-  coc#config('diagnostic.warningSign', 'W>')
-  coc#config('diagnostic.refreshOnInsertMode', true)
-  coc#config('coc.preferences.formatOnSaveFiletypes', ['c', 'cpp', 'rust', 'vue'])
-endif
+def g:Tapi_vimcd(buf: number, path: string)
+  execute 'tcd ' .. path
+  pwd
+enddef
+
+def g:LspErrors(): string
+  var counts = lsp#get_buffer_diagnostics_counts()
+  return counts.error > 0 ? 'E:' .. counts.error : ''
+enddef
+
+def g:LspWarnings(): string
+  var counts = lsp#get_buffer_diagnostics_counts()
+  return counts.warning > 0 ? 'W:' .. counts.warning : ''
+enddef
+
+def LspBufferEnabled()
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gr <plug>(lsp-references)
+  nmap <buffer> K <plug>(lsp-hover)
+
+  autocmd! BufWritePre <buffer> LspDocumentFormatSync
+  autocmd! User lsp_diagnostics_updated lightline#update()
+enddef
+
+augroup vim_setup
+  au!
+  autocmd GUIEnter * {
+    set guifont=PlemolJPConsoleNF-Regular:h12
+
+    if @% == '' && wordcount().chars == 0
+      terminal ++curwin
+    endif
+  }
+  autocmd WinNew * wincmd L
+  autocmd User lsp_buffer_enabled LspBufferEnabled()
+augroup END
+
+# AtCoder のための設定
+def g:ForAtCoder()
+  execute 'terminal ++shell cd ' .. expand('%:p:h') .. ' && g++-11 -std=c++20 ' .. expand('%:p') .. ' && ./a.out'
+enddef
+
+nnoremap <F5> :update<CR>:call g:ForAtCoder()<CR>
