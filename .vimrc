@@ -6,6 +6,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+
+Plug 'vimsence/vimsence'
 plug#end()
 
 set backspace=indent,eol,start
@@ -79,5 +81,4 @@ augroup END
 def g:ForAtCoder()
   execute 'terminal ++shell cd ' .. expand('%:p:h') .. ' && g++-11 -std=c++20 ' .. expand('%:p') .. ' && ./a.out'
 enddef
-
 nnoremap <F5> :update<CR>:call g:ForAtCoder()<CR>
