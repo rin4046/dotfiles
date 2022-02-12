@@ -8,6 +8,3 @@ ln -snfv "$DOTFILES/.zshrc" "$HOME/.zshrc"
 ln -snfv "$DOTFILES/.vimrc" "$HOME/.vimrc"
 ln -snfv "$DOTFILES/.editorconfig" "$HOME/.editorconfig"
 ln -snfv "$DOTFILES/.clang-format" "$HOME/.clang-format"
-
-mkdir -p "$HOME/.config/nvim"
-ln -snfv "$DOTFILES/.config/nvim/init.vim" "$HOME/.config/nvim/init.vim"

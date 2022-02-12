@@ -26,11 +26,6 @@ DOTFILES="$HOME/.dotfiles"
     *) ln -snfv "$DOTFILES/$filename" "$HOME/$filename" ;;
     esac
   done
-
-  mkdir -p "$HOME/.config/kitty"
-  ln -snfv "$DOTFILES/.config/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
-  mkdir -p "$HOME/.config/nvim"
-  ln -snfv "$DOTFILES/.config/nvim/init.vim" "$HOME/.config/nvim/init.vim"
 }
 
 : "Install software from the Brewfile" && {
