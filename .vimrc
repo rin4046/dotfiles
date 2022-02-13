@@ -67,7 +67,6 @@ augroup vim_setup
   au!
   autocmd GUIEnter * {
     set guifont=PlemolJPConsoleNF-Regular:h12
-
     if @% == '' && wordcount().chars == 0
       terminal ++curwin
     endif
