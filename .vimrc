@@ -6,7 +6,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-
 Plug 'vimsence/vimsence'
 plug#end()
 
@@ -79,6 +78,12 @@ augroup END
 
 # AtCoder のための設定
 def g:ForAtCoder()
-  execute 'terminal ++shell cd ' .. expand('%:p:h') .. ' && g++-11 -std=c++20 ' .. expand('%:p') .. ' && ./a.out'
+  var command = 'cd ' .. expand('%:p:h') .. ' && make SRC="' .. expand('%:t') .. '"'
+  update
+  execute 'terminal ++shell' command
 enddef
-nnoremap <F5> :update<CR>:call g:ForAtCoder()<CR>
+
+augroup atcoder
+  au!
+  autocmd BufEnter */atcoder/* nnoremap <buffer> <F5> :call ForAtCoder()<CR>
+augroup END
