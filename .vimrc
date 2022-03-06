@@ -6,7 +6,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-Plug 'vimsence/vimsence'
 plug#end()
 
 set backspace=indent,eol,start
