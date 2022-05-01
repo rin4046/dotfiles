@@ -3,6 +3,7 @@ vim9script
 plug#begin('~/.vim/plugged')
 Plug 'vv9k/bogster'
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
