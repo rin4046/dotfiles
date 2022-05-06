@@ -5,11 +5,11 @@
 ### macOS
 
 ```zsh
-zsh -c "$(curl -fsSL https://dotfiles.rinrin.me/mac)"
+curl https://dotfiles.rinrin.me/mac | zsh
 ```
 
 ### Linux
 
 ```zsh
-zsh -c "$(curl -fsSL https://dotfiles.rinrin.me/linux)"
+curl https://dotfiles.rinrin.me/linux | zsh
 ```
