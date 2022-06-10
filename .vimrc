@@ -65,12 +65,6 @@ enddef
 
 augroup vim_setup
   au!
-  autocmd GUIEnter * {
-    set guifont=PlemolJPConsoleNF-Regular:h12
-    if @% == '' && wordcount().chars == 0
-      terminal ++curwin
-    endif
-  }
   autocmd WinNew * wincmd L
   autocmd User lsp_buffer_enabled LspBufferEnabled()
 augroup END
