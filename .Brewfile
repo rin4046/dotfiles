@@ -7,15 +7,15 @@ brew "clang-format"
 brew "deno"
 brew "exa"
 brew "gcc"
+brew "geckodriver"
 brew "gh"
 brew "gibo"
 brew "hugo"
-brew "python@3.9"
 brew "mas"
 brew "nvm"
 brew "pandoc"
 brew "pyright"
-brew "python-tk@3.9"
+brew "python@3.9"
 brew "rustup-init"
 brew "starship"
 brew "stlink"
@@ -32,7 +32,7 @@ cask "iterm2"
 cask "keepingyouawake"
 cask "kekaexternalhelper"
 cask "mactex-no-gui"
-cask "multipass"
+cask "obs"
 cask "onyx"
 cask "visual-studio-code"
 mas "Affinity Designer", id: 824171161
@@ -45,5 +45,4 @@ mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 mas "Slack", id: 803453959
-mas "Wake Up Time", id: 495945638
 mas "Xcode", id: 497799835
