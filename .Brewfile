@@ -1,6 +1,5 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "rin4046/tap", "https://github.com/rin4046/homebrew-tap.git"
 brew "clang-format"
