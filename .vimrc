@@ -65,9 +65,38 @@ enddef
 
 augroup vim_setup
   au!
+  autocmd GUIEnter * {
+    set guifont=PlemolJPConsoleNF-Regular:h12
+    if @% == '' && wordcount().chars == 0
+      terminal ++curwin
+    endif
+    set macmeta
+  }
   autocmd WinNew * wincmd L
   autocmd User lsp_buffer_enabled LspBufferEnabled()
 augroup END
+
+if $HOSTNAME =~ "^xdev[0-9][0-9]\.edu\.tut\.ac\.jp$"
+  noremap  ÷ <C-w>w
+  inoremap ÷ <Esc><C-w>w
+  tnoremap ÷ <C-\><C-n><C-w>w
+
+  noremap  è <C-w>h
+  inoremap è <Esc><C-w>h
+  tnoremap è <C-\><C-n><C-w>h
+
+  noremap  ê <C-w>j
+  inoremap ê <Esc><C-w>j
+  tnoremap ê <C-\><C-n><C-w>j
+
+  noremap  ë <C-w>k
+  inoremap ë <Esc><C-w>k
+  tnoremap ë <C-\><C-n><C-w>k
+
+  noremap  ì <C-w>l
+  inoremap ì <Esc><C-w>l
+  tnoremap ì <C-\><C-n><C-w>l
+endif
 
 # AtCoder のための設定
 def g:ForAtCoder()
